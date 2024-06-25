@@ -18,7 +18,8 @@ public class TareaPorcentaje{
         do{
             tiempoFinal = System.nanoTime();
             tiempoTranscurrido = tiempoFinal - tiempoInicial;
-            barraLlenar.setValue((int) (tiempoTranscurrido/tiempoEsperaTotal) * 100);
+            System.out.println((double)(tiempoTranscurrido)/(double)(tiempoEsperaTotal));
+            barraLlenar.setValue((int) ((double)(tiempoTranscurrido)*100/(double)(tiempoEsperaTotal)));
         }while (tiempoTranscurrido < tiempoEsperaTotal);
 
 

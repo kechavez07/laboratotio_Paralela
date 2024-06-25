@@ -26,7 +26,8 @@ public class Main {
         tarea4.start();
         tarea5.start();
 
-
+        pantalla.pack();
+        pantalla.setVisible(true);
 
         try {
             tarea1.join();
@@ -47,5 +48,8 @@ public class Main {
         barraCarga.setValue(porcentaje);
     }
 
+    public static Pantalla getPantalla() {
+        return pantalla;
+    }
 
 }
