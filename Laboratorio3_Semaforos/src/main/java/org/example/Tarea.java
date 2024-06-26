@@ -23,7 +23,7 @@ public class Tarea extends Thread{
     public void run() {
         try{
             System.out.println("Tarea: " + nombre + ", comenzada");
-            TareaPorcentaje tareaPorcentaje = new TareaPorcentaje(tiempoUsado, elegirBarra(nombre));
+            ControlBarras tareaPorcentaje = new ControlBarras(tiempoUsado, elegirBarra(nombre));
             tareaPorcentaje.llenarBarra();
             semaforo.acquire();
             System.out.println("Tarea: " + nombre + ", entró en la sección crítica");

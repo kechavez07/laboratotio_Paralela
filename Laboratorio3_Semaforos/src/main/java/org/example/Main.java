@@ -39,8 +39,6 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println(Porcentaje.obtenerPorcentaje());
-
     }
 
     public static void llenarBarra(int porcentaje){
