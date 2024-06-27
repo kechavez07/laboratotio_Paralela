@@ -1,17 +1,12 @@
 package org.example;
 
-import javax.swing.*;
-
 public class Porcentaje {
     private static int porcentaje = 0;
 
     public static void incrementar(int incremento){
-        if(porcentaje+incremento <= 100) {
+        if(porcentaje+incremento <= 100 && incremento > 0) {
             porcentaje = porcentaje + incremento;
-            Main.llenarBarra(porcentaje);
-        }
-        else{
-            System.out.println("El porcentaje no puede incrementarse sobre 100");
+            Main.llenarBarraGeneral(porcentaje);
         }
     }
 

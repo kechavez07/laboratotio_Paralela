@@ -23,12 +23,13 @@ public class Tarea extends Thread{
     public void run() {
         try{
             System.out.println("Tarea: " + nombre + ", comenzada");
-            ControlBarras tareaPorcentaje = new ControlBarras(tiempoUsado, elegirBarra(nombre));
-            tareaPorcentaje.llenarBarra();
+            System.out.println("Tarea: " + nombre + ", esperando la seccion critica");
             semaforo.acquire();
-            System.out.println("Tarea: " + nombre + ", entró en la sección crítica");
+            System.out.println("Tarea: " + nombre + ", entro a la sección crítica");
+            llenarBarra(elegirBarra(nombre), tiempoUsado);
             Porcentaje.incrementar(porcentajeAportado);
-            System.out.println("Tarea: " + nombre + ", terminada");
+            System.out.println("Tarea: " + nombre + ", salio de la sección crítica");
+
         }
         catch(InterruptedException e){
             e.printStackTrace();
@@ -53,5 +54,19 @@ public class Tarea extends Thread{
             default:
                 throw new IllegalStateException("Unexpected value: " + nombre);
         }
+    }
+
+    public void llenarBarra(JProgressBar barraLlenar, long tiempoEsperaTotal) {
+        long tiempoInicial, tiempoFinal, tiempoTranscurrido;
+        tiempoInicial = System.nanoTime();
+        int porcentaje, porcentajeGeneral;
+        int porcentajePrevio = 0;
+        do{
+            tiempoFinal = System.nanoTime();
+            tiempoTranscurrido = tiempoFinal - tiempoInicial;
+            porcentaje = ((int) ((double)(tiempoTranscurrido*100/tiempoEsperaTotal)));
+            if(porcentaje > 100) porcentaje = 100;
+            barraLlenar.setValue(porcentaje);
+        }while (tiempoTranscurrido < tiempoEsperaTotal);
     }
 }

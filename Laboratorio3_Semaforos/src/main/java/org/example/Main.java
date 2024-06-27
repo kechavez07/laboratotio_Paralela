@@ -41,7 +41,7 @@ public class Main {
 
     }
 
-    public static void llenarBarra(int porcentaje){
+    public static void llenarBarraGeneral(int porcentaje){
         JProgressBar barraCarga = pantalla.getBarraGeneral();
         barraCarga.setValue(porcentaje);
     }
